@@ -1,0 +1,18 @@
+
+Titre en haut et en footer : Poppins,sans-serif noir
+
+<h3>: nombre de tweets , nombre de retweets, nombre de favoris : Poppins, sans-serif noir
+
+texte : "tweets", "retweets", "favoris" : Poppins, sans-serif , blanc
+
+titre liste des tweets : date , utilisateur , tweets : Poppins, sans-serif
+
+liste des tweets : Poppins, sans-serif, RGB(128, 128, 128)
+
+"temp guide", "Saturday", temperature : Poppins, sans-serif, RGB(51, 51, 51)
+
+"wind", "humidity", "Pressure", "cloud cover", heures méteo : Poppins, sans-serif, RGB(108, 117, 125)
+
+"valeur de wind", "valeur de humidity", "valeur de Pressure", "valeur de cloud cover": Poppins, sans-serif, RGB(102, 102, 102)
+
+localisation méteo : Poppins, sans-serif, RGB(102, 102, 102)
