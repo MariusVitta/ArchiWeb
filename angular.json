@@ -24,9 +24,31 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/leaflet/dist/leaflet.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/plugins/bootstrap/js/bootstrap.bundle.min.js",
+              "src/plugins/chart.js/Chart.min.js",
+              "src/dist/js/adminlte.js",
+              "src/dist/js/pages/dashboard.js",
+              "src/dist/js/demo.js",
+              "src/vendor/jquery-3.2.1.min.js",
+              "src/vendor/bootstrap-4.1/popper.min.js",
+              "src/vendor/bootstrap-4.1/bootstrap.min.js",
+              "src/vendor/slick/slick.min.js",
+              "src/vendor/wow/wow.min.js",
+              "src/vendor/animsition/animsition.min.js",
+              "src/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js",
+              "src/vendor/counter-up/jquery.waypoints.min.js",
+              "src/vendor/counter-up/jquery.counterup.min.js",
+              "src/vendor/circle-progress/circle-progress.min.js",
+              "src/vendor/perfect-scrollbar/perfect-scrollbar.js",
+              "src/vendor/chartjs/Chart.bundle.min.js",
+              "src/vendor/select2/select2.min.js",
+              "src/js/main.js",
+              "src/server.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -115,6 +137,123 @@
           "configurations": {
             "production": {
               "devServerTarget": "client:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "leMans24": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/leMans24",
+      "sourceRoot": "projects/leMans24/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/leMans24",
+            "index": "projects/leMans24/src/index.html",
+            "main": "projects/leMans24/src/main.ts",
+            "polyfills": "projects/leMans24/src/polyfills.ts",
+            "tsConfig": "projects/leMans24/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/leMans24/src/favicon.ico",
+              "projects/leMans24/src/assets"
+            ],
+            "styles": [
+              "projects/leMans24/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/leMans24/src/environments/environment.ts",
+                  "with": "projects/leMans24/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "leMans24:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "leMans24:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "leMans24:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/leMans24/src/test.ts",
+            "polyfills": "projects/leMans24/src/polyfills.ts",
+            "tsConfig": "projects/leMans24/tsconfig.spec.json",
+            "karmaConfig": "projects/leMans24/karma.conf.js",
+            "assets": [
+              "projects/leMans24/src/favicon.ico",
+              "projects/leMans24/src/assets"
+            ],
+            "styles": [
+              "projects/leMans24/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/leMans24/tsconfig.app.json",
+              "projects/leMans24/tsconfig.spec.json",
+              "projects/leMans24/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/leMans24/e2e/protractor.conf.js",
+            "devServerTarget": "leMans24:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "leMans24:serve:production"
             }
           }
         }

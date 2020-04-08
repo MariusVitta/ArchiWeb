@@ -1,25 +1,72 @@
-// This file is required by karma.conf.js and loads recursively all the .spec and framework files
+declare var require: any;
 
-import 'zone.js/dist/zone-testing';
-import { getTestBed } from '@angular/core/testing';
-import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting
-} from '@angular/platform-browser-dynamic/testing';
+var Twit = require('twit'); 
 
-declare const require: {
-  context(path: string, deep?: boolean, filter?: RegExp): {
-    keys(): string[];
-    <T>(id: string): T;
-  };
-};
+var T = new Twit({
+    consumer_key:         'hZBufPmhjsHj4V78aILmiltjY',
+    consumer_secret:      'hNb3XDRLCsyCk2YjYJEwGsnTooHHpHiDzl67UrU9dYzCTaP7ve',
+    access_token:         '1237727295667929090-XQZou8KGU0I997y1qCE5SFpb5EJ5uI',
+    access_token_secret:  'f3lCdjc7y4lN57x0jIzQyCcHLWa9CbMbMSoPrpjpDKfiC',
+    timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
+    strictSSL:            true,     // optional - requires SSL certificates to be valid.
+});
 
-// First, initialize the Angular testing environment.
-getTestBed().initTestEnvironment(
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting()
-);
-// Then we find all the tests.
-const context = require.context('./', true, /\.spec\.ts$/);
-// And load the modules.
-context.keys().map(context);
+export class Tweets{
+
+    private _date: string;
+    private _texte: string; 
+    private _localisation: string; 
+
+    constructor(date, localisation, texte){
+        this._date = date;
+        this._texte = texte;
+        this._localisation = localisation;
+    }
+    public getLocalisation(): string{
+        return this._localisation;
+    }
+
+    public getDate(): string {
+        return this._date;
+    }
+    public getTexte(): string {
+        return this._texte;
+    }
+
+}
+
+export class TweetService{
+
+    public _liste: Array<Tweets>;
+
+    constructor(){
+        let listeTweets = new Array<Tweets>(10);
+
+        T.get('search/tweets', { q: '#LeMans24 since:2017-01-01', count: 200 }, (err, search, response)=>{
+            let i = 0;
+            
+            search.statuses.forEach(element => {
+                if(element.text.indexOf("RT") === -1 && i < 15){
+                    listeTweets[i] = new Tweets(element.created_at, element.geo, element.text);
+                    i++;
+                }
+            })
+            this.reception(listeTweets);
+            return listeTweets; 
+        });
+    }
+
+    public reception(liste){
+        this._liste = liste;
+        //console.log(this._liste);
+        this._liste.forEach(element => {
+            console.log(element.getDate() + " : " + element.getTexte() + "\n");
+        });
+    }
+
+    public getTweets(){
+        return this._liste;
+    }
+}
+
+var t = new TweetService();
