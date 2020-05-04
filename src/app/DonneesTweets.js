@@ -34,7 +34,7 @@ var TweetService = /** @class */ (function () {
         T.get('search/tweets', { q: '#LeMans24 since:2017-01-01', count: 200 }, function (err, search, response) {
             var i = 0;
             search.statuses.forEach(function (element) {
-                if (element.text.indexOf("RT") === -1 && i < 10) {
+                if (element.text.indexOf("RT") === -1 && i < 15) {
                     listeTweets[i] = new Tweets(element.created_at, element.geo, element.text);
                     i++;
                 }
