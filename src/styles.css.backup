@@ -5,10 +5,11 @@
 @import "https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css";
 @import "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css";
 @import "assets/libs/chartist/dist/chartist.min.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 @import "css/font-face.css";
 @import "dist2/css/style.min.css";
 @import "vendor/font-awesome-4.7/css/font-awesome.min.css";
-/*@import "vendor/font-awesome-5/css/fontawesome-all.min.css";*/
+@import "vendor/font-awesome-5/css/fontawesome-all.min.css";
 @import "vendor/mdi-font/css/material-design-iconic-font.min.css";
 @import "vendor/bootstrap-4.1/bootstrap.min.css";
 @import "vendor/animsition/animsition.min.css";

@@ -12,9 +12,10 @@ const TOKEN = '1237727295667929090-XQZou8KGU0I997y1qCE5SFpb5EJ5uI';
 const TOKEN_SECRET = 'f3lCdjc7y4lN57x0jIzQyCcHLWa9CbMbMSoPrpjpDKfiC';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    standalone: false
 })
 export class AppComponent implements OnInit  {
   title = 'salut';
